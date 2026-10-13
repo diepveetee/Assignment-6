@@ -1,13 +1,9 @@
 package com.elkabani.mydb;
 
-import com.elkabani.mydb.entities.Address;
 import com.elkabani.mydb.entities.Category;
 import com.elkabani.mydb.entities.Product;
-import com.elkabani.mydb.entities.User;
 import com.elkabani.mydb.repositories.CategoryRepository;
 import com.elkabani.mydb.repositories.ProductRepository;
-import com.elkabani.mydb.repositories.UserRepository;
-import com.elkabani.mydb.services.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -35,6 +31,10 @@ public class MyDbApplication {
         category.setName("Electronics");
         category = categoryRepository.save(category);
 
+        var category2 = new Category();
+        category2.setName("Misc");
+        category2 = categoryRepository.save(category2);
+
         // Create a product and assign the category
         var camera = new Product();
         camera.setName("Camera");
@@ -51,8 +51,16 @@ public class MyDbApplication {
 
         headphones = productRepository.save(headphones);
 
-        // C. Delete the headphones product
-        productRepository.delete(headphones);
+        var sword = new Product();
+        sword.setName("Sword");
+        sword.setPrice(new BigDecimal("1199.99"));
+        sword.setCategory(category2);
+
+        productRepository.save(sword);
+
+
+        // C. Delete the sword product
+        // productRepository.delete(sword);
 
         System.out.println("Operations completed successfully!");
     }
