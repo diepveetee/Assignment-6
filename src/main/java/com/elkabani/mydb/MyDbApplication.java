@@ -60,7 +60,7 @@ public class MyDbApplication {
 
 
         // C. Delete the sword product
-        // productRepository.delete(sword);
+        productRepository.delete(sword);
 
         System.out.println("Operations completed successfully!");
     }
