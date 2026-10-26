@@ -14,3 +14,7 @@ spring:
 
   flyway:
     enabled: false
+
+    logging:
+      level:
+        org.springframework.web: DEBUG
