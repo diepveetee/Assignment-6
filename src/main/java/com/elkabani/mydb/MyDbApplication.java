@@ -7,6 +7,7 @@ import com.elkabani.mydb.repositories.ProductRepository;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 
 
@@ -58,6 +59,11 @@ public class MyDbApplication {
 
         productRepository.save(sword);
 
+        //debugging
+        var mappings = context.getBean(RequestMappingHandlerMapping.class);
+
+        mappings.getHandlerMethods().forEach((key, value) ->
+                System.out.println("MAPPING: " + key));
 
         // C. Delete the sword product
         productRepository.delete(sword);
